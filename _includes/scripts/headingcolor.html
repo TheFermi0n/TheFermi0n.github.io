@@ -1,0 +1,16 @@
+{% if site.enable_headingcolor %}
+  <!-- Color the first 3 letters of a heading except h1 -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var headings = document.querySelectorAll('h2, h3, h4, h5, h6');
+
+      headings.forEach(function(heading) {
+        if (heading.tagName.toLowerCase() !== 'h1') {
+          var text = heading.textContent;
+          var coloredText = '<span class="heading-accent">' + text.slice(0, 3) + '</span>' + text.slice(3);
+          heading.innerHTML = coloredText;
+        }
+      });
+    });
+  </script>
+{%- endif %}
