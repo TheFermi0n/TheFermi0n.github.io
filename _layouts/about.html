@@ -12,30 +12,33 @@ layout: default
         </header>
 
         <article>
-          {% if page.profile -%}
-          <div class="profile float-{%- if page.profile.align == 'left' -%}left{%- else -%}right{%- endif -%}">
-            {%- if page.profile.image %}
-              {%- assign profile_image_path = page.profile.image | prepend: 'assets/img/' -%}
+          <div class="about-article">
+            {% if page.profile -%}
+            <div class="profile float-{%- if page.profile.align == 'left' -%}left{%- else -%}right{%- endif -%}">
+              {%- if page.profile.image %}
+                {%- assign profile_image_path = page.profile.image | prepend: 'assets/img/' -%}
 
-              {% if page.profile.image_circular %}
-                {%- assign profile_image_class = "img-fluid z-depth-1 rounded-circle" -%}
-              {% else %}
-                {%- assign profile_image_class = "img-fluid z-depth-1 rounded" -%}
-              {% endif %}
+                {% if page.profile.image_circular %}
+                  {%- assign profile_image_class = "img-fluid z-depth-1 rounded-circle" -%}
+                {% else %}
+                  {%- assign profile_image_class = "img-fluid z-depth-1 rounded" -%}
+                {% endif %}
 
-              {% capture sizes %}(min-width: {{site.max_width}}) {{ site.max_width | minus: 30 | times: 0.3}}px, (min-width: 576px) 30vw, 95vw"{% endcapture %}
-              
-              {% include figure.html
-                path = profile_image_path
-                class = profile_image_class
-                sizes = sizes
-                alt = page.profile.image
-                cache_bust = true 
-              %}
-            {% endif -%}
-            {%- if page.profile.more_info %}
-            <div class="more-info">
-              {{ page.profile.more_info }}
+                {% capture sizes %}(min-width: {{site.max_width}}) {{ site.max_width | minus: 30 | times: 0.3}}px, (min-width: 576px) 30vw, 95vw"{% endcapture %}
+                
+                {% include figure.html
+                  path = profile_image_path
+                  class = profile_image_class
+                  sizes = sizes
+                  alt = page.profile.image
+                  cache_bust = true 
+                %}
+              {% endif -%}
+              {%- if page.profile.more_info %}
+              <div class="more-info">
+                {{ page.profile.more_info }}
+              </div>
+              {%- endif %}
 
               <!-- Social -->
               {%- if page.social %}
@@ -52,8 +55,6 @@ layout: default
               {%- endif %}
             </div>
             {%- endif %}
-          </div>
-          {%- endif %}
 
             <div class="clearfix">
               {{ content }}
@@ -86,19 +87,22 @@ layout: default
 
           <!-- News -->
           {% if page.news and site.announcements.enabled -%}
-            <h2><a href="{{ '/news/' | relative_url }}" style="color: inherit;">news</a></h2>
+            <hr>
+            <h2><a href="{{ '/news/' | relative_url }}" style="color: inherit;">announcements</a></h2>
             {%- include news.html limit=true %}
           {%- endif %}
 
           <!-- Latest posts -->
           {% if page.latest_posts -%}
+            <hr>
             <h2><a href="{{ '/blog/' | relative_url }}" style="color: inherit;">latest posts</a></h2>
             {%- include latest_posts.html %}
           {%- endif %}
 
           <!-- Selected papers -->
           {% if page.selected_papers -%}
-            <h2><a href="{{ '/publications/' | relative_url }}" style="color: inherit;">selected publications</a></h2>
+            <hr>
+            <h2><a href="{{ '/publications/' | relative_url }}" style="color: inherit;">recent publications</a></h2>
             {%- include selected_papers.html %}
           {%- endif %}
         </article>
