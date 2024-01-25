@@ -41,8 +41,33 @@ layout: default
           </div>
           {%- endif %}
 
-          <div class="clearfix">
-            {{ content }}
+            <div class="clearfix">
+              {{ content }}
+
+              <!-- interests and education -->
+              <div>
+                <h3 class="section-subheading">Interests</h3>
+                <ul class="ul-interests mb-0">
+                  {% for interest in page.interests %}
+                  <li>{{ interest }}</li>
+                  {% endfor %}
+                </ul>
+              </div>
+    
+              <div>
+                <h3 class="section-subheading">Education</h3>
+                <ul class="ul-edu fa-ul mb-0">
+                  {% for edu in page.education %}
+                  <li>
+                    <div class="description">
+                    <p class="course">{{ edu.course }}, {{ edu.year }}</p>
+                    <p class="institution"><a href="{{ edu.url }}">{{ edu.institution }}</a></p>
+                    </div>
+                  </li>
+                  {% endfor %}
+                </ul>
+              </div>
+            </div>
           </div>
 
           <!-- News -->
