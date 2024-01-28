@@ -174,7 +174,6 @@ table th {
   }
 
   .institution {
-    font-family: var(--font-monospace);
     font-size: 0.875rem;
 
     a {
@@ -189,6 +188,12 @@ table th {
   li {
     position: relative;
     padding: 0 15px 4px 3px !important;
+  }
+
+  li:first-child {
+    p, a {
+      color: var(--global-theme-color);
+    }
   }
 
   li:first-child::before {
