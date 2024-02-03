@@ -199,9 +199,9 @@ table th {
   li:first-child::before {
     content: "";
     position: absolute;
-    height: 2em;
-    width: 2em;
-    background-image: url(/assets/img/icons/bhu.svg);
+    height: 2.4em;
+    width: 2.4em;
+    background-image: url(/assets/img/icons/kyudai.svg);
     background-size: contain;
     background-repeat: no-repeat;
     margin-left: -2.85em;
@@ -211,8 +211,20 @@ table th {
   li:nth-child(2)::before {
     content: "";
     position: absolute;
-    height: 2em;
-    width: 2em;
+    height: 2.4em;
+    width: 2.4em;
+    background-image: url(/assets/img/icons/bhu.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-left: -2.85em;
+    margin-top: 0.25em;
+  }
+
+  li:nth-child(3)::before {
+    content: "";
+    position: absolute;
+    height: 2.4em;
+    width: 2.4em;
     background-image: url(/assets/img/icons/cotton.svg);
     background-size: contain;
     background-repeat: no-repeat;
@@ -281,6 +293,23 @@ div .highlight span {
 
 .publications {
   h2.bibliography {
+    font-size: var(--h2-size);
+    color: var(--global-text-color);
+    // border-top: 2px dashed var(--global-divider-color);
+    border: none;
+    padding-top: 1rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    text-align: left;
+    text-transform: lowercase;
+
+    span {
+      font-size: var(--h2-size);
+    }
+  }
+}
+.projects {
+  h2.category {
     font-size: var(--h2-size);
     color: var(--global-text-color);
     // border-top: 2px dashed var(--global-divider-color);
