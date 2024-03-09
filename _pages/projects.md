@@ -5,13 +5,14 @@ permalink: /projects/
 description: A collection of my research works.
 nav: true
 nav_order: 2
-display_categories: [physics, others]
+# display_categories: [physics, others]
 horizontal: true
 ---
 
-# <a href=''>This page is still under construction</a>
-
----
+> ##### Note
+>
+> This page is still under construction
+{: .block-tip }
 
 <!-- pages/projects.md -->
 <div class="projects">
