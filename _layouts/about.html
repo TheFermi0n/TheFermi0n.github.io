@@ -13,67 +13,74 @@ layout: default
 
         <article>
           <div class="about-article">
-            {% if page.profile -%}
-            <div class="profile float-{%- if page.profile.align == 'left' -%}left{%- else -%}right{%- endif -%}">
-              {%- if page.profile.image %}
-                {%- assign profile_image_path = page.profile.image | prepend: 'assets/img/' -%}
+            <div class="part1">
+              {% if page.profile -%}
+              <div class="profile float-{%- if page.profile.align == 'left' -%}left{%- else -%}right{%- endif -%}">
+                {%- if page.profile.image %}
+                  {%- assign profile_image_path = page.profile.image | prepend: 'assets/img/' -%}
 
-                {% if page.profile.image_circular %}
-                  {%- assign profile_image_class = "img-fluid z-depth-1 rounded-circle" -%}
-                {% else %}
-                  {%- assign profile_image_class = "img-fluid z-depth-1 rounded" -%}
-                {% endif %}
+                  {% if page.profile.image_circular %}
+                    {%- assign profile_image_class = "img-fluid z-depth-1 rounded-circle" -%}
+                  {% else %}
+                    {%- assign profile_image_class = "img-fluid z-depth-1 rounded" -%}
+                  {% endif %}
 
-                {% capture sizes %}(min-width: {{site.max_width}}) {{ site.max_width | minus: 30 | times: 0.3}}px, (min-width: 576px) 30vw, 95vw"{% endcapture %}
-                
-                {% include figure.html
-                  path = profile_image_path
-                  class = profile_image_class
-                  sizes = sizes
-                  alt = page.profile.image
-                  cache_bust = true 
-                %}
-              {% endif -%}
-              {%- if page.profile.more_info %}
-              <div class="more-info">
-                {{ page.profile.more_info }}
+                  {% capture sizes %}(min-width: {{site.max_width}}) {{ site.max_width | minus: 30 | times: 0.3}}px, (min-width: 576px) 30vw, 95vw"{% endcapture %}
+                  
+                  {% include figure.html
+                    path = profile_image_path
+                    class = profile_image_class
+                    sizes = sizes
+                    alt = page.profile.image
+                    cache_bust = true 
+                  %}
+                {% endif -%}
+                {%- if page.profile.more_info %}
+                <div class="more-info">
+                  {{ page.profile.more_info }}
+                </div>
+                {%- endif %}
+
+                <!-- Social -->
+                {%- if page.social %}
+                  <div class="social">
+                    <div class="contact-icons">
+                      {% include social.html %}
+                    </div>
+
+                    <div class="contact-note">
+                      {{ site.contact_note }}
+                    </div>
+
+                  </div>
+                {%- endif %}
               </div>
               {%- endif %}
 
-              <!-- Social -->
-              {%- if page.social %}
-                <div class="social">
-                  <div class="contact-icons">
-                    {% include social.html %}
-                  </div>
-
-                  <div class="contact-note">
-                    {{ site.contact_note }}
-                  </div>
-
-                </div>
-              {%- endif %}
+              <div class="clearfix">
+                {{ content }}
+              </div>
             </div>
-            {%- endif %}
 
-            <div class="clearfix">
-              {{ content }}
-
+            <div class="row">
               <!-- interests and education -->
-              <div>
+              <div class="col-md-5">
                 <h3 class="section-subheading">research interests</h3>
                 <ul class="ul-interests mb-0">
                   {% for interest in page.interests %}
-                  <li>{{ interest }}</li>
+                  <li>
+                    {{ interest }}
+                  </li>
                   {% endfor %}
                 </ul>
               </div>
     
-              <div>
+              <div class="col-md-7">
                 <h3 class="section-subheading">academic career</h3>
                 <ul class="ul-edu fa-ul mb-0">
                   {% for edu in page.education %}
                   <li>
+                    <i class="fa-li fa-solid fa-graduation-cap"></i>
                     <div class="description">
                     <p class="course">{{ edu.course }}, {{ edu.year }}</p>
                     <p class="institution"><a href="{{ edu.url }}">{{ edu.institution }}</a></p>
@@ -88,21 +95,21 @@ layout: default
           <!-- News -->
           {% if page.news and site.announcements.enabled -%}
             <hr>
-            <h2><a href="{{ '/news/' | relative_url }}" style="color: inherit;">announcements</a></h2>
+            <h2><a href="{{ '/news/' | relative_url }}" style="color: inherit;"><span class="heading-accent">ann</span>ouncements</a></h2>
             {%- include news.html limit=true %}
           {%- endif %}
 
           <!-- Latest posts -->
           {% if page.latest_posts -%}
             <hr>
-            <h2><a href="{{ '/blog/' | relative_url }}" style="color: inherit;">latest posts</a></h2>
+            <h2><a href="{{ '/blog/' | relative_url }}" style="color: inherit;"><span class="heading-accent">lat</span>est posts</a></h2>
             {%- include latest_posts.html %}
           {%- endif %}
 
           <!-- Selected papers -->
           {% if page.selected_papers -%}
             <hr>
-            <h2><a href="{{ '/publications/' | relative_url }}" style="color: inherit;">recent publications</a></h2>
+            <h2><a href="{{ '/publications/' | relative_url }}" style="color: inherit;"><span class="heading-accent">rec</span>ent publications</a></h2>
             {%- include selected_papers.html %}
           {%- endif %}
         </article>
